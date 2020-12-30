@@ -25,14 +25,14 @@ class Client(SocketStream):
         except socket.error as socket_error:
             raise socket_error
 
-    def connect_to_server(self):
+    def connect_to_enemy(self):
         try:
             self.client_socket.connect((self._server_ip, self._server_port))
             self._is_connected = True
         except socket.error as socket_error:
             raise socket_error
 
-    def send_message(self, message: bytearray):
+    def send_message(self, message: bytes):
         if self._is_connected:
             try:
                 self.client_socket.send(message)
@@ -45,3 +45,6 @@ class Client(SocketStream):
                 return self.client_socket.recv(message_size)
             except socket.error as socket_error:
                 raise socket_error
+
+    def close_connection(self):
+        self.client_socket.close()

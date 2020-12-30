@@ -15,9 +15,17 @@ from abc import ABCMeta, abstractmethod
 
 class SocketStream(metaclass=ABCMeta):
     @abstractmethod
-    def send_message(self, message: bytearray):
+    def connect_to_enemy(self):
+        pass
+
+    @abstractmethod
+    def send_message(self, message: bytes):
         pass
 
     @abstractmethod
     def receive_message(self, message_size: int):
+        pass
+
+    @abstractmethod
+    def close_connection(self):
         pass
