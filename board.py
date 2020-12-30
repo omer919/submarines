@@ -79,7 +79,7 @@ class Board:
                       coordinates: List[Tuple[int, int]]):
         if self.are_all_coordinates_on_map(coordinates):
             for coordinate in coordinates:
-                self._coordinates_with_submarines[coordinate] = (submarine, False)
+                self._coordinates_with_submarines[coordinate] = [submarine, False]
 
     def hit_submarine_at_coordinate(self, coordinate: Tuple[int, int]) -> int:
         if self.is_coordinate_on_map(coordinate):
